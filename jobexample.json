@@ -1,0 +1,580 @@
+{
+    "page": 0,
+    "pageSize": 0,
+    "totalCount": 0,
+    "hasMore": true,
+    "data": [
+      {
+        "id": 0,
+        "active": true,
+        "status": "string",
+        "jobNumber": "string",
+        "projectId": 0,
+        "businessUnit": {
+          "id": 0,
+          "active": true,
+          "name": "string",
+          "materialSku": "string",
+          "quickbooksClass": "string",
+          "accountCode": "string",
+          "franchiseId": "string",
+          "conceptCode": "string",
+          "corporateContractNumber": "string",
+          "tenant": {
+            "id": 0,
+            "name": "string",
+            "quickbooksClass": "string",
+            "accountCode": "string",
+            "franchiseId": "string",
+            "conceptCode": "string",
+            "modifiedOn": "2018-10-18T13:47:45.511Z"
+          },
+          "modifiedOn": "2018-10-18T13:47:45.511Z"
+        },
+        "campaign": {
+          "id": 0,
+          "name": "string",
+          "modifiedOn": "2018-10-18T13:47:45.511Z",
+          "category": {
+            "id": 0,
+            "name": "string",
+            "active": true
+          },
+          "active": true
+        },
+        "techGeneratedLeadSource": {
+          "id": 0,
+          "name": "string"
+        },
+        "type": {
+          "id": 0,
+          "name": "string",
+          "modifiedOn": "2018-10-18T13:47:45.511Z"
+        },
+        "customer": {
+          "id": 0,
+          "active": true,
+          "name": "string",
+          "email": "string",
+          "balance": 0,
+          "doNotMail": true,
+          "address": {
+            "street": "string",
+            "unit": "string",
+            "country": "string",
+            "city": "string",
+            "state": "string",
+            "zip": "string",
+            "streetAddress": "string",
+            "latitude": 0,
+            "longitude": 0
+          },
+          "doNotService": true,
+          "type": "Residential",
+          "contacts": [
+            {
+              "active": true,
+              "modifiedOn": "2018-10-18T13:47:45.511Z",
+              "id": 0,
+              "type": "string",
+              "value": "string",
+              "memo": "string"
+            }
+          ],
+          "mergedToId": 0,
+          "modifiedOn": "2018-10-18T13:47:45.511Z",
+          "memberships": [
+            {
+              "id": 0,
+              "active": true,
+              "type": {
+                "id": 0,
+                "active": true,
+                "name": "string"
+              },
+              "status": "string",
+              "from": "2018-10-18T13:47:45.511Z",
+              "to": "2018-10-18T13:47:45.511Z",
+              "locationId": 0
+            }
+          ],
+          "hasActiveMembership": true,
+          "customFields": [
+            {
+              "typeId": 0,
+              "name": "string",
+              "value": "string"
+            }
+          ],
+          "createdOn": "2018-10-18T13:47:45.511Z",
+          "createdBy": 0
+        },
+        "location": {
+          "id": 0,
+          "active": true,
+          "name": "string",
+          "email": "string",
+          "customer": {
+            "id": 0,
+            "active": true,
+            "name": "string",
+            "email": "string",
+            "balance": 0,
+            "doNotMail": true,
+            "address": {
+              "street": "string",
+              "unit": "string",
+              "country": "string",
+              "city": "string",
+              "state": "string",
+              "zip": "string",
+              "streetAddress": "string",
+              "latitude": 0,
+              "longitude": 0
+            },
+            "doNotService": true,
+            "type": "Residential",
+            "contacts": [
+              {
+                "active": true,
+                "modifiedOn": "2018-10-18T13:47:45.511Z",
+                "id": 0,
+                "type": "string",
+                "value": "string",
+                "memo": "string"
+              }
+            ],
+            "mergedToId": 0,
+            "modifiedOn": "2018-10-18T13:47:45.511Z",
+            "memberships": [
+              {
+                "id": 0,
+                "active": true,
+                "type": {
+                  "id": 0,
+                  "active": true,
+                  "name": "string"
+                },
+                "status": "string",
+                "from": "2018-10-18T13:47:45.511Z",
+                "to": "2018-10-18T13:47:45.511Z",
+                "locationId": 0
+              }
+            ],
+            "hasActiveMembership": true,
+            "customFields": [
+              {
+                "typeId": 0,
+                "name": "string",
+                "value": "string"
+              }
+            ],
+            "createdOn": "2018-10-18T13:47:45.511Z",
+            "createdBy": 0
+          },
+          "address": {
+            "street": "string",
+            "unit": "string",
+            "country": "string",
+            "city": "string",
+            "state": "string",
+            "zip": "string",
+            "streetAddress": "string",
+            "latitude": 0,
+            "longitude": 0
+          },
+          "contacts": [
+            {
+              "active": true,
+              "modifiedOn": "2018-10-18T13:47:45.511Z",
+              "id": 0,
+              "type": "string",
+              "value": "string",
+              "memo": "string"
+            }
+          ],
+          "mergedToId": 0,
+          "modifiedOn": "2018-10-18T13:47:45.511Z",
+          "zone": {
+            "id": 0,
+            "active": true,
+            "name": "string",
+            "zips": [
+              "string"
+            ],
+            "cities": [
+              "string"
+            ],
+            "territoryNumbers": [
+              "string"
+            ],
+            "locnNumbers": [
+              "string"
+            ]
+          },
+          "customFields": [
+            {
+              "typeId": 0,
+              "name": "string",
+              "value": "string"
+            }
+          ],
+          "equipment": [
+            {
+              "active": true,
+              "id": 0,
+              "equipmentId": 0,
+              "name": "string",
+              "serialNumber": "string",
+              "memo": "string",
+              "manufacturer": "string",
+              "model": "string",
+              "cost": 0,
+              "installedOn": "2018-10-18T13:47:45.511Z",
+              "manufacturerWarrantyStart": "2018-10-18T13:47:45.511Z",
+              "manufacturerWarrantyEnd": "2018-10-18T13:47:45.511Z",
+              "serviceProviderWarrantyStart": "2018-10-18T13:47:45.511Z",
+              "serviceProviderWarrantyEnd": "2018-10-18T13:47:45.511Z"
+            }
+          ],
+          "createdOn": "2018-10-18T13:47:45.511Z",
+          "createdBy": 0
+        },
+        "summary": "string",
+        "createdOn": "2018-10-18T13:47:45.511Z",
+        "scheduledOn": "2018-10-18T13:47:45.511Z",
+        "completedOn": "2018-10-18T13:47:45.511Z",
+        "start": "2018-10-18T13:47:45.511Z",
+        "end": "2018-10-18T13:47:45.511Z",
+        "duration": 0,
+        "arrivalWindowStart": "2018-10-18T13:47:45.511Z",
+        "arrivalWindowEnd": "2018-10-18T13:47:45.511Z",
+        "noCharge": true,
+        "tags": [
+          {
+            "id": 0,
+            "ownerId": 0,
+            "name": "string"
+          }
+        ],
+        "jobAssignments": [
+          {
+            "id": 0,
+            "active": true,
+            "jobId": 0,
+            "jobNumber": "string",
+            "technician": {
+              "id": 0,
+              "name": "string",
+              "modifiedOn": "2018-10-18T13:47:45.511Z"
+            },
+            "team": "string",
+            "split": 0,
+            "totalDrivingHours": 0,
+            "totalWorkingHours": 0,
+            "assignedOn": "2018-10-18T13:47:45.511Z",
+            "assignedBy": {
+              "id": 0,
+              "name": "string",
+              "modifiedOn": "2018-10-18T13:47:45.511Z"
+            },
+            "status": "Scheduled",
+            "modifiedOn": "2018-10-18T13:47:45.511Z",
+            "payType": "Hourly"
+          }
+        ],
+        "estimates": [
+          {
+            "id": 0,
+            "jobId": 0,
+            "name": "string",
+            "jobNumber": "string",
+            "status": {
+              "value": 0,
+              "name": "string"
+            },
+            "summary": "string",
+            "items": [
+              {
+                "id": 0,
+                "sku": {
+                  "id": 0,
+                  "name": "string",
+                  "displayName": "string",
+                  "type": "Service",
+                  "soldHours": 0,
+                  "generalLedgerAccountId": 0,
+                  "generalLedgerAccountName": "string",
+                  "modifiedOn": "2018-10-18T13:47:45.511Z"
+                },
+                "skuAccount": "string",
+                "type": "NotSold",
+                "description": "string",
+                "membershipTypeId": "string",
+                "qty": 0,
+                "unitRate": 0,
+                "total": 0,
+                "tax": 0,
+                "subtotal": 0,
+                "itemGroupName": "string",
+                "itemGroupRootId": 0,
+                "modifiedOn": "2018-10-18T13:47:45.511Z"
+              }
+            ],
+            "modifiedOn": "2018-10-18T13:47:45.511Z"
+          }
+        ],
+        "invoice": {
+          "id": 0,
+          "active": true,
+          "adjustmentToId": 0,
+          "jobId": 0,
+          "jobNumber": "string",
+          "status": {
+            "value": 0,
+            "name": "string",
+            "depositedOn": "2018-10-18T13:47:45.511Z"
+          },
+          "batchName": "string",
+          "batchId": 0,
+          "batchNumber": 0,
+          "summary": "string",
+          "number": "string",
+          "invoicedOn": "2018-10-18T13:47:45.511Z",
+          "commissionEligibilityDate": "2018-10-18T13:47:45.511Z",
+          "tax": 0,
+          "subtotal": 0,
+          "total": 0,
+          "balance": 0,
+          "items": [
+            {
+              "id": 0,
+              "invoiceId": 0,
+              "active": true,
+              "sku": {
+                "id": 0,
+                "name": "string",
+                "displayName": "string",
+                "type": "Service",
+                "soldHours": 0,
+                "generalLedgerAccountId": 0,
+                "generalLedgerAccountName": "string",
+                "modifiedOn": "2018-10-18T13:47:45.511Z"
+              },
+              "salesType": "PerformOnly",
+              "description": "string",
+              "membershipTypeId": "string",
+              "qty": 0,
+              "unitRate": 0,
+              "total": 0,
+              "totalCost": 0,
+              "itemGroupName": "string",
+              "itemGroupRootId": 0,
+              "modifiedOn": "2018-10-18T13:47:45.511Z",
+              "order": 0
+            }
+          ],
+          "payments": [
+            {
+              "id": 0,
+              "invoiceId": 0,
+              "active": true,
+              "type": {
+                "id": 0,
+                "name": "string",
+                "modifiedOn": "2018-10-18T13:47:45.511Z"
+              },
+              "amount": 0,
+              "totalAmount": 0,
+              "memo": "string",
+              "paidOn": "2018-10-18T13:47:45.511Z",
+              "modifiedOn": "2018-10-18T13:47:45.511Z",
+              "settlementStatus": "NotSettled",
+              "settlementDate": "2018-10-18T13:47:45.511Z",
+              "batchName": "string",
+              "batchId": 0,
+              "batchNumber": 0
+            }
+          ],
+          "purchaseOrders": [
+            {
+              "id": 0,
+              "invoiceId": 0,
+              "vendor": {
+                "id": 0,
+                "name": "string",
+                "modifiedOn": "2018-10-18T13:47:45.511Z",
+                "active": true,
+                "isTruckReplenishment": true
+              },
+              "technician": {
+                "id": 0,
+                "name": "string",
+                "modifiedOn": "2018-10-18T13:47:45.511Z"
+              },
+              "amount": 0,
+              "summary": "string",
+              "modifiedOn": "2018-10-18T13:47:45.511Z",
+              "date": "2018-10-18T13:47:45.511Z",
+              "typeId": 0,
+              "type": "string",
+              "batchId": 0,
+              "sentOn": "2018-10-18T13:47:45.511Z",
+              "receivedOn": "2018-10-18T13:47:45.511Z",
+              "tax": 0,
+              "jobNumber": "string",
+              "jobId": 0,
+              "items": [
+                {
+                  "id": 0,
+                  "skuId": 0,
+                  "name": "string",
+                  "quantity": 0,
+                  "cost": 0,
+                  "total": 0,
+                  "serialNumber": "string",
+                  "description": "string",
+                  "chargeable": true,
+                  "materialVendorId": 0,
+                  "businessUnitId": 0
+                }
+              ],
+              "customFields": [
+                {
+                  "typeId": 0,
+                  "name": "string",
+                  "value": "string"
+                }
+              ],
+              "purchaseOrderNumber": "string"
+            }
+          ],
+          "royaltyStatus": "Pending",
+          "royaltyDate": "2018-10-18T13:47:45.511Z",
+          "royaltySentOn": "2018-10-18T13:47:45.511Z",
+          "royaltyMemo": "string",
+          "modifiedOn": "2018-10-18T13:47:45.511Z"
+        },
+        "createdBy": {
+          "email": "string",
+          "phoneNumber": "string",
+          "loginName": "string",
+          "role": "Unspecified",
+          "businessUnitId": 0,
+          "active": true,
+          "customFields": [
+            {
+              "typeId": 0,
+              "name": "string",
+              "value": "string"
+            }
+          ],
+          "id": 0,
+          "name": "string",
+          "modifiedOn": "2018-10-18T13:47:45.511Z"
+        },
+        "leadCall": {
+          "id": 0,
+          "receivedOn": "2018-10-18T13:47:45.511Z",
+          "duration": "string",
+          "from": "string",
+          "to": "string",
+          "direction": "Inbound",
+          "callType": "Abandoned",
+          "reason": {
+            "id": 0,
+            "name": "string",
+            "lead": true,
+            "active": true
+          },
+          "recordingUrl": "string",
+          "createdBy": {
+            "id": 0,
+            "name": "string"
+          },
+          "customer": {
+            "id": 0,
+            "active": true,
+            "name": "string",
+            "email": "string",
+            "balance": 0,
+            "doNotMail": true,
+            "address": {
+              "street": "string",
+              "unit": "string",
+              "country": "string",
+              "city": "string",
+              "state": "string",
+              "zip": "string",
+              "streetAddress": "string",
+              "latitude": 0,
+              "longitude": 0
+            },
+            "doNotService": true,
+            "type": "Residential",
+            "contacts": [
+              {
+                "active": true,
+                "modifiedOn": "2018-10-18T13:47:45.511Z",
+                "id": 0,
+                "type": "string",
+                "value": "string",
+                "memo": "string"
+              }
+            ],
+            "mergedToId": 0,
+            "modifiedOn": "2018-10-18T13:47:45.511Z",
+            "memberships": [
+              {
+                "id": 0,
+                "active": true,
+                "type": {
+                  "id": 0,
+                  "active": true,
+                  "name": "string"
+                },
+                "status": "string",
+                "from": "2018-10-18T13:47:45.512Z",
+                "to": "2018-10-18T13:47:45.512Z",
+                "locationId": 0
+              }
+            ],
+            "hasActiveMembership": true,
+            "customFields": [
+              {
+                "typeId": 0,
+                "name": "string",
+                "value": "string"
+              }
+            ],
+            "createdOn": "2018-10-18T13:47:45.512Z",
+            "createdBy": 0
+          },
+          "campaign": {
+            "id": 0,
+            "name": "string",
+            "modifiedOn": "2018-10-18T13:47:45.512Z",
+            "category": {
+              "id": 0,
+              "name": "string",
+              "active": true
+            },
+            "active": true
+          },
+          "modifiedOn": "2018-10-18T13:47:45.512Z"
+        },
+        "manageEmployeeEmail": true,
+        "manageFollowUpEmail": true,
+        "modifiedOn": "2018-10-18T13:47:45.512Z",
+        "recallForId": 0,
+        "notificationsEnabled": true,
+        "customFields": [
+          {
+            "typeId": 0,
+            "name": "string",
+            "value": "string"
+          }
+        ]
+      }
+    ]
+  }

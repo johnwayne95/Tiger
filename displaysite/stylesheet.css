@@ -1,0 +1,22 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#servicetitan {
+    height: 1545px;
+    width: 33%;
+    position:relative;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+#iframe {
+    height: 100%;
+    position:relative;
+    top:-640px;
+    left: -40px;
+    width: 100%;
+}
