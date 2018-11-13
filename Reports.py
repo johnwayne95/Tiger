@@ -730,16 +730,25 @@ def weeklymgmtsheet():
 def goalstxt():
     goals = os.path.join(sys.path[0], 'goals.txt')
     file = open(goals)
-    plumbing.monthgoal = float(file.readline()) #
+    file.readline()
+    plumbing.monthgoal = float(file.readline())
+    file.readline() 
     plumbing.quartergoal = float(file.readline())
+    file.readline()
     plumbing.yearlygoal = float(file.readline())
 
+    file.readline()
     electric.monthgoal = float(file.readline())
+    file.readline()
     electric.quartergoal = float(file.readline())
+    file.readline()
     electric.yearlygoal = float(file.readline())
 
+    file.readline()
     hvac.monthgoal = float(file.readline())
+    file.readline()
     hvac.quartergoal = float(file.readline())
+    file.readline()
     hvac.yearlygoal = float(file.readline())
 
     file.close()

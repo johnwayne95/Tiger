@@ -1,9 +1,9 @@
-345586.0
-1110076.0
-5000000.0
-86329.0
-279772.0
-1100000.0
-319756.0
-910471.0
-4100000.0
+plumbingmonthly 345586.0
+plumbingquarterly 1110076.0
+plumbingyearly 5000000.0
+electricmonthly 86329.0
+electricquarterly 279772.0
+electricyearly 1100000.0
+hvacmonthly 319756.0
+hvacquarterly 910471.0
+hvacyearly 4100000.0
