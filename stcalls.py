@@ -1,8 +1,8 @@
-import requests
 import json
 import datetime
 import os
 import sys
+import requests
 
 minimumtime = datetime.time(0, 1, 0, 0)
 
