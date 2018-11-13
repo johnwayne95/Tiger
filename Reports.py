@@ -731,6 +731,7 @@ def goalstxt():
     goals = os.path.join(sys.path[0], 'goals.txt')
     file = open(goals)
     file.readline()
+    file.readline()
     plumbing.monthgoal = float(file.readline())
     file.readline() 
     plumbing.quartergoal = float(file.readline())
