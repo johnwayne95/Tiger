@@ -2,12 +2,8 @@ import json
 import datetime
 import os
 import sys
-<<<<<<< HEAD
-# test
-=======
 import requests
 
->>>>>>> 4f2e482e8f96e93dd233f7c8fff5149f60c1250e
 minimumtime = datetime.time(0, 1, 0, 0)
 
 today = datetime.datetime.today()
