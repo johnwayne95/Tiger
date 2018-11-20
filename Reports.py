@@ -208,12 +208,12 @@ def csvgetter():
                                 if("Maintenance" in row['Business Unit']):
                                     x.maintsold += 1
 
-                            if(row['Type'] in ('IAQ System Design', 'IAQ Work', 'SOURCE REMOVAL')):
+                            if(row['Type'] in ('IAQ System Design', 'IAQ Work', 'SOURCE REMOVAL') and "Completed" in row['Status']):
                                 x.iaqconv += 1
                                 if(float(row['Total']) > 0.0):
                                     x.iaqcls +=1
 
-                            if(row['Type'] in ('System Design', 'SYSTEM DESIGN', 'QA - INSTALL', 'SYSTEM DESIGN - MARKETED', 'QA - SYSTEM DESIGN', 'INSTALL', 'INSTALL - MARKETED')):
+                            if(row['Type'] in ('System Design', 'SYSTEM DESIGN', 'QA - INSTALL', 'SYSTEM DESIGN - MARKETED', 'QA - SYSTEM DESIGN', 'INSTALL', 'INSTALL - MARKETED') and "Completed" in row['Status']):
                                 x.sdconv += 1
                                 if(float(row['Total']) > 0.0):
                                     x.sdcls +=1
