@@ -1,11 +1,12 @@
 import requests
 import json
+import datetime
 
-#headers = {"Accept": "application/json", "serviceTitanApiKey" : "8ae6480a-2499-4e84-bd09-7c461f033ddb", "createdAfter" : "2018-01-01", "pageSize" : "20000"}
-#resp = requests.get('HTTPS://api.servicetitan.com/v1/jobs?', params = headers)
+headers = {"Accept": "application/json", "serviceTitanApiKey" : "8ae6480a-2499-4e84-bd09-7c461f033ddb", "startsAfter" : "2018-11-11", "pageSize" : "20000"}
+resp = requests.get('HTTPS://api.servicetitan.com/v1/jobs?', params = headers)
 
-#with open("jobsdump.json", "w") as write_file:
-    #json.dump(resp.json(), write_file)
+with open("jobsdump.json", "w") as write_file:
+    json.dump(resp.json(), write_file)
 
 
 with open("jobsdump.json", "r") as read_file:
@@ -13,19 +14,24 @@ with open("jobsdump.json", "r") as read_file:
 
 
 jobs = data['data']
-
+total = 0.0
 print(type(jobs))
 for x in range(len(jobs)):
     jobs[x] = dict(jobs[x])
     jobs[x]['businessUnit'] = dict(jobs[x]['businessUnit'])
 
-    # for y in range(len(jobs[x]['estimates'])):
-    #     jobs[x]['estimates'][y] = dict(jobs[x]['estimates'][y])
-        
-    #     for z in range(len(jobs[x]['estimates'][y]['items'])):
-    #         jobs[x]['estimates'][y]['items'][z] = dict(jobs[x]['estimates'][y]['items'][z])
-    #         print(jobs[x]['estimates'][y]['items'][z]['total'])
+    if(jobs[x]['invoice'] != None):
+        jobs[x]['invoice'] = dict(jobs[x]['invoice'])
 
-    
-    print(jobs[x]['start'])
-    print (jobs[x]['businessUnit']['name'])
+        
+        testdate = datetime.date(2018, 11, 11)
+        jobstart = datetime.datetime.strptime(jobs[x]['start'][:19], "%Y-%m-%dT%H:%M:%S").date()
+        # if(jobstart >= testdate):
+        print (jobs[x]['businessUnit']['name'])
+        # print (jobs[x]['businessUnit']['id'])
+        #print(jobs[x]['invoice']['total'])
+        #total += jobs[x]['invoice']['total']
+        for y in range(len(jobs[x]['tags'])):
+            jobs[x]['tags'][y] = dict(jobs[x]['tags'][y])
+            print(jobs[x]['tags'][y]['name'])
+        #print(total)
