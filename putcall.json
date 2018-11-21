@@ -1,58 +1,121 @@
 {
-    "callId": 0,
-    "createdOn": "2018-10-30T15:00:59.357Z",
+  "id": 0,
+  "jobNumber": "string",
+  "projectId": 0,
+  "businessUnit": {
+    "id": 0,
+    "active": true,
+    "name": "string",
+    "materialSku": "string",
+    "quickbooksClass": "string",
+    "accountCode": "string",
+    "franchiseId": "string",
+    "conceptCode": "string",
+    "corporateContractNumber": "string",
+    "tenant": {
+      "id": 0,
+      "name": "string",
+      "quickbooksClass": "string",
+      "accountCode": "string",
+      "franchiseId": "string",
+      "conceptCode": "string",
+      "modifiedOn": "2018-11-21T14:38:51.608Z"
+    },
+    "modifiedOn": "2018-11-21T14:38:51.608Z"
+  },
+  "type": {
+    "id": 0,
+    "name": "string",
+    "modifiedOn": "2018-11-21T14:38:51.608Z"
+  },
+  "leadCall": {
+    "id": 0,
+    "receivedOn": "2018-11-21T14:38:51.608Z",
     "duration": "string",
+    "from": "string",
+    "to": "string",
     "direction": "Inbound",
-    "status": null,
-    "callType": "Excused",
-    "excuseMemo": "Telemarketer - TW",
-    "campaignId": 0,
-    "jobId": 0,
-    "agentId": 1,
-    "recordingUrl": "string",
-    "recordingId": "string",
+    "callType": "Abandoned",
     "reason": {
-      "name": "TELEMARKETER",
-      "lead": false
+      "id": 0,
+      "name": "string",
+      "lead": true,
+      "active": true
+    },
+    "recordingUrl": "string",
+    "createdBy": {
+      "id": 0,
+      "name": "string"
     },
     "customer": {
       "id": 0,
+      "active": true,
       "name": "string",
+      "email": "string",
+      "balance": 0,
+      "doNotMail": true,
       "address": {
         "street": "string",
         "unit": "string",
         "country": "string",
         "city": "string",
         "state": "string",
-        "zip": "string"
+        "zip": "string",
+        "streetAddress": "string",
+        "latitude": 0,
+        "longitude": 0
       },
+      "doNotService": true,
+      "type": "Residential",
       "contacts": [
         {
+          "active": true,
+          "modifiedOn": "2018-11-21T14:38:51.609Z",
           "id": 0,
           "type": "string",
           "value": "string",
           "memo": "string"
         }
-      ]
+      ],
+      "mergedToId": 0,
+      "modifiedOn": "2018-11-21T14:38:51.609Z",
+      "memberships": [
+        {
+          "id": 0,
+          "active": true,
+          "type": {
+            "id": 0,
+            "active": true,
+            "name": "string"
+          },
+          "status": "string",
+          "from": "2018-11-21T14:38:51.609Z",
+          "to": "2018-11-21T14:38:51.609Z",
+          "locationId": 0
+        }
+      ],
+      "hasActiveMembership": true,
+      "customFields": [
+        {
+          "typeId": 0,
+          "name": "string",
+          "value": "string"
+        }
+      ],
+      "createdOn": "2018-11-21T14:38:51.609Z",
+      "createdBy": 0
     },
-    "location": {
+    "campaign": {
       "id": 0,
       "name": "string",
-      "address": {
-        "street": "string",
-        "unit": "string",
-        "country": "string",
-        "city": "string",
-        "state": "string",
-        "zip": "string"
+      "modifiedOn": "2018-11-21T14:38:51.609Z",
+      "category": {
+        "id": 0,
+        "name": "string",
+        "active": true
       },
-      "contacts": [
-        {
-          "id": 0,
-          "type": "string",
-          "value": "string",
-          "memo": "string"
-        }
-      ]
-    }
+      "active": true
+    },
+    "modifiedOn": "2018-11-21T14:38:51.609Z"
   }
+}

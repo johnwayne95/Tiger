@@ -29,6 +29,7 @@ calls = data['data']
 for x in range(len(calls)):
     calls[x] = dict(calls[x])
     calls[x]['leadCall'] = dict(calls[x]['leadCall'])
+    calls[x]['leadCall']['createdBy'] = dict(calls[x]['leadCall']['createdBy'])
     calltime = datetime.datetime.strptime(calls[x]['leadCall']['duration'][:8], '%H:%M:%S').time()
     status = calls[x]['leadCall']['callType']
     callid = calls[x]['leadCall']['id']
@@ -37,6 +38,7 @@ for x in range(len(calls)):
         calls[x]['leadCall']['callType'] = 'Excused'
         calls[x]['leadCall']['reason'] = None
         calls[x]['leadCall']['recordingUrl'] = None
+        calls[x]['leadCall']['createdBy']['id'] = 20488678
 
         #print(calls[x]['leadCall'])
         url = 'HTTPS://api.servicetitan.com/v1/calls/' + str(calls[x]['leadCall']['id'])
