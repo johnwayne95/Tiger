@@ -39,6 +39,7 @@ for x in range(len(calls)):
         calls[x]['leadCall']['reason'] = None
         calls[x]['leadCall']['recordingUrl'] = None
         calls[x]['leadCall']['createdBy']['id'] = 20488678
+        calls[x]['leadCall']['createdBy']['name'] = "Display"
 
         #print(calls[x]['leadCall'])
         url = 'HTTPS://api.servicetitan.com/v1/calls/' + str(calls[x]['leadCall']['id'])

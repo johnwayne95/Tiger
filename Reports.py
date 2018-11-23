@@ -192,7 +192,7 @@ def csvgetter():
                                 if("Service" in row['Business Unit']):
                                     x.service += 1
                         #MONTHLY CONVERTIBLE
-                        if(x.name in row['Technician(s)']):
+                        if(x.name in row['Sold By']):
                             if(('No' in row['No Charge'] and 'No' in row['Recall'] and 'No' in row['Warranty']) or float(row['Total']) >= 49.0 ):
                                 x.convcalls += 1
                                 if("Service" in row['Business Unit']):
