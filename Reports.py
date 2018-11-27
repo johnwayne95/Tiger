@@ -46,23 +46,25 @@ springfieldtotal = 0.0
 
 #TECHS
 ryanm = Techs.Tech("RYAN M", "10")
-kurt = Techs.Tech("KURT", "12")
+josh = Techs.Tech("JOSH", "12")
 alan = Techs.Tech("ALAN", "14")
+logand = Techs.Tech("LOGAN D", "16")
+derrick = Techs.Tech("DERRICK S", "18")
 
-logang = Techs.Tech("LOGAN G", "18")
-bobb = Techs.Tech("BOB B", "20")
+logang = Techs.Tech("LOGAN G", "22")
+bobb = Techs.Tech("BOB B", "24")
 
-erikf = Techs.Tech("ERIK F", "26")
-amandaj = Techs.Tech("AMANDA J", "28")
-jimmie = Techs.Tech("JIMMIE", "30")
+erikf = Techs.Tech("ERIK F", "30")
+amandaj = Techs.Tech("AMANDA J", "32")
+jimmie = Techs.Tech("JIMMIE", "34")
 
-samk = Techs.Tech("SAM K", "36")
-rickb = Techs.Tech("RICK B", "38")
-joez = Techs.Tech("JOE Z", "40")
-cierrab = Techs.Tech("CIERRA", "42")
+samk = Techs.Tech("SAM K", "40")
+rickb = Techs.Tech("RICK B", "42")
+joez = Techs.Tech("JOE Z", "44")
+cierrab = Techs.Tech("CIERRA", "46")
 
 #ARRAY OF TECHS
-techs = [ryanm, kurt, alan, logang, bobb, erikf, amandaj, jimmie, samk, rickb, joez, cierrab]
+techs = [ryanm, josh, alan, logand, derrick, logang, bobb, erikf, amandaj, jimmie, samk, rickb, joez, cierrab]
 
 
 #BUSINESS UNITS
