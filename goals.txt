@@ -1,18 +1,18 @@
 THESE MUST BE SAVED EXACTLY LIKE THIS. NUMBERS ON SEPERATE INDIVIDUAL LINES.
 plumbingmonthly:
-345586.0
+387470.0
 plumbingquarterly:
 1110076.0
 plumbingyearly:
 5000000.0
 electricmonthly:
-86329.0
+108329.0
 electricquarterly:
 279772.0
 electricyearly:
 1100000.0
 hvacmonthly:
-319756.0
+302604.0
 hvacquarterly:
 910471.0
 hvacyearly:
