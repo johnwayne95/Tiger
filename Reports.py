@@ -49,11 +49,10 @@ ryanm = Techs.Tech("RYAN M", "10")
 josh = Techs.Tech("JOSH", "12")
 alan = Techs.Tech("ALAN", "14")
 logand = Techs.Tech("LOGAN D", "16")
-derek = Techs.Tech("DEREK P", "18")
 
-logang = Techs.Tech("LOGAN G", "22")
-bobb = Techs.Tech("BOB B", "24")
+bobb = Techs.Tech("BOB B", "22")
 
+logang = Techs.Tech("LOGAN G", "28")
 erikf = Techs.Tech("ERIK F", "30")
 amandaj = Techs.Tech("AMANDA J", "32")
 jimmie = Techs.Tech("JIMMIE", "34")
@@ -64,7 +63,7 @@ joez = Techs.Tech("JOE Z", "44")
 cierrab = Techs.Tech("CIERRA", "46")
 
 #ARRAY OF TECHS
-techs = [ryanm, josh, alan, logand, derek, logang, bobb, erikf, amandaj, jimmie, samk, rickb, joez, cierrab]
+techs = [ryanm, josh, alan, logand, logang, bobb, erikf, amandaj, jimmie, samk, rickb, joez, cierrab]
 
 
 #BUSINESS UNITS
