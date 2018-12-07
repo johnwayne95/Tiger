@@ -45,25 +45,7 @@ endofyear = now.replace(month=12, day=31)
 springfieldtotal = 0.0
 
 #TECHS
-ryanm = Techs.Tech("RYAN M", "10")
-josh = Techs.Tech("JOSH", "12")
-alan = Techs.Tech("ALAN", "14")
-logand = Techs.Tech("LOGAN D", "16")
-
-bobb = Techs.Tech("BOB B", "22")
-
-logang = Techs.Tech("LOGAN G", "28")
-erikf = Techs.Tech("ERIK F", "30")
-amandaj = Techs.Tech("AMANDA J", "32")
-jimmie = Techs.Tech("JIMMIE", "34")
-
-samk = Techs.Tech("SAM K", "40")
-rickb = Techs.Tech("RICK B", "42")
-joez = Techs.Tech("JOE Z", "44")
-cierrab = Techs.Tech("CIERRA", "46")
-
-#ARRAY OF TECHS
-techs = [ryanm, josh, alan, logand, logang, bobb, erikf, amandaj, jimmie, samk, rickb, joez, cierrab]
+techs = []
 
 
 #BUSINESS UNITS
@@ -728,31 +710,49 @@ def weeklymgmtsheet():
 
 #GRABS MONTHLY, QUARTERLY, AND YEARLY GOALS FROM GOALS.TXT
 def goalstxt():
-    goals = os.path.join(sys.path[0], 'goals.txt')
-    file = open(goals)
-    file.readline()
-    file.readline()
-    plumbing.monthgoal = float(file.readline())
-    file.readline() 
-    plumbing.quartergoal = float(file.readline())
-    file.readline()
-    plumbing.yearlygoal = float(file.readline())
+    
+    with open('goals.csv', encoding="utf8", newline='') as File:
+        reader = csv.DictReader(File)
+        for row in reader:
+            if(row['BUSINESS UNIT'] == "plumbing"):
+                if(row['TIME FRAME'] == "month"):
+                    plumbing.monthgoal = float(row['GOAL $$$'])
+                if(row['TIME FRAME'] == "quarter"):
+                    plumbing.quartergoal = float(row['GOAL $$$'])
+                if(row['TIME FRAME'] == "year"):
+                    plumbing.yearlygoal = float(row['GOAL $$$'])
 
-    file.readline()
-    electric.monthgoal = float(file.readline())
-    file.readline()
-    electric.quartergoal = float(file.readline())
-    file.readline()
-    electric.yearlygoal = float(file.readline())
+            if(row['BUSINESS UNIT'] == "electric"):
+                if(row['TIME FRAME'] == "month"):
+                    electric.monthgoal = float(row['GOAL $$$'])
+                if(row['TIME FRAME'] == "quarter"):
+                    electric.quartergoal = float(row['GOAL $$$'])
+                if(row['TIME FRAME'] == "year"):
+                    electric.yearlygoal = float(row['GOAL $$$'])
 
-    file.readline()
-    hvac.monthgoal = float(file.readline())
-    file.readline()
-    hvac.quartergoal = float(file.readline())
-    file.readline()
-    hvac.yearlygoal = float(file.readline())
+            if(row['BUSINESS UNIT'] == "hvac"):
+                if(row['TIME FRAME'] == "month"):
+                    hvac.monthgoal = float(row['GOAL $$$'])
+                if(row['TIME FRAME'] == "quarter"):
+                    hvac.quartergoal = float(row['GOAL $$$'])
+                if(row['TIME FRAME'] == "year"):
+                    hvac.yearlygoal = float(row['GOAL $$$'])
 
-    file.close()
+#GRABS TECHNICIAN INFO FROM .TXT FILE. THIS MAKES IT EASIER TO EDIT THIS INFORMATION
+def techstxt():
+    
+    with open('Techlist.csv', encoding="utf8", newline='') as File:
+        reader = csv.DictReader(File)
+        count = 0
+        for row in reader:
+            listname = "Tech" + str(count)
+            lastinit = row['LAST NAME'][0]
+            name = row['FIRST NAME'] + " " + lastinit
+            name = name.upper()
+            listname = Techs.Tech(name, row['SERVICE ADVISOR #S ROW'], row['BUSINESS UNIT'])
+            techs.append(listname)
+            count += 1
+
 
 def dupsheet():
     scope = ['https://spreadsheets.google.com/feeds',

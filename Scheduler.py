@@ -10,6 +10,7 @@ def main():
     gui.setup()
 
     Reports.goalstxt()
+    Reports.techstxt()
 
     gui.inputgoals()
 

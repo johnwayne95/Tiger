@@ -1,7 +1,8 @@
 class Tech:
-    def __init__(self, name, row):
+    def __init__(self, name, row, businessunit):
         self.name = name
         self.row = row
+        self.businessunit = businessunit
         self.lastweek = 0.0
         self.monthtotal = 0.0
         self.wip = 0.0
