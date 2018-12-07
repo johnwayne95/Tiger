@@ -343,23 +343,25 @@ def soldbysheet():
 
     for tech in techs:
 
+        cell = soldbysheet.find(tech.name)
+        tech.row = str(cell.row + 1)
+
         #INPUT LAST WEEK TOTALS FOR TECHS
         soldbysheet.update_acell('A' + tech.row, tech.lastweek)
 
-        #INPUT MONTHLY (NOT FOR HVAC ADVISORS)
-        if('ERIK F' not in tech.name and 'AMANDA J' not in tech.name and 'JIMMIE' not in tech.name):
-            range_build = 'K' + tech.row + ":L" + tech.row
-            cell_list = soldbysheet.range(range_build)
-            cell_list[0].value = tech.maintenance #MAINTENANCE
-            cell_list[1].value = tech.service #SERVICE
-            soldbysheet.update_cells(cell_list)
-
-        # #INPUT IAQ & SD (HVAC ADVISORS)
-        if('ERIK F' in tech.name or 'AMANDA J' in tech.name or 'JIMMIE' in tech.name):
+        if(tech.comfortadvisor == "TRUE"):
+            #INPUT IAQ & SD (HVAC ADVISORS)
             range_build = 'K' + tech.row + ":L" + tech.row
             cell_list = soldbysheet.range(range_build)
             cell_list[0].value = str(tech.iaqcls) + "/" + str(tech.iaqconv) #IAQ
             cell_list[1].value = str(tech.sdcls) + "/" + str(tech.sdconv) #SD
+            soldbysheet.update_cells(cell_list)
+        else:
+            #INPUT MONTHLY (NOT FOR HVAC ADVISORS)
+            range_build = 'K' + tech.row + ":L" + tech.row
+            cell_list = soldbysheet.range(range_build)
+            cell_list[0].value = tech.maintenance #MAINTENANCE
+            cell_list[1].value = tech.service #SERVICE
             soldbysheet.update_cells(cell_list)
         
         range_build = 'O' + tech.row + ":T" + tech.row
@@ -451,7 +453,7 @@ def conversionsheet():
     worksheetname = "Club Conversion"
     conversionsheet = client.open("Club Sales Stats").worksheet(worksheetname)
 
-    range_build = 'B17:C25'
+    range_build = 'B17:C24'
     cell_list = conversionsheet.range(range_build)
 
     #JOBS
@@ -459,20 +461,20 @@ def conversionsheet():
     cell_list[2].value = lynora[3]
     cell_list[4].value = nicole[3]
     cell_list[6].value = teresa[3]
-    cell_list[10].value = elias[3]
-    cell_list[12].value = lisa[3]
-    cell_list[14].value = marcie[3]
-    cell_list[16].value = ben[3]
+    cell_list[8].value = elias[3]
+    cell_list[10].value = lisa[3]
+    cell_list[12].value = marcie[3]
+    cell_list[14].value = ben[3]
 
     #OPPORTUNITIES 
     cell_list[1].value = justine[4]
     cell_list[3].value = lynora[4]
     cell_list[5].value = nicole[4]
     cell_list[7].value = teresa[4]
-    cell_list[11].value = elias[4]
-    cell_list[13].value = lisa[4]
-    cell_list[15].value = marcie[4]
-    cell_list[17].value = ben[4]
+    cell_list[9].value = elias[4]
+    cell_list[11].value = lisa[4]
+    cell_list[13].value = marcie[4]
+    cell_list[15].value = ben[4]
 
     conversionsheet.update_cells(cell_list)
 
@@ -749,23 +751,6 @@ def techstxt():
             lastinit = row['LAST NAME'][0]
             name = row['FIRST NAME'] + " " + lastinit
             name = name.upper()
-            listname = Techs.Tech(name, row['SERVICE ADVISOR #S ROW'], row['BUSINESS UNIT'])
+            listname = Techs.Tech(name, row['BUSINESS UNIT'], row['COMFORT ADVISOR?'])
             techs.append(listname)
             count += 1
-
-
-def dupsheet():
-    scope = ['https://spreadsheets.google.com/feeds',
-        'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name(secret, scope)
-    client = gspread.authorize(creds)
-
-    # Find a workbook by name and open the first sheet
-    # Make sure you use the right name here.
-    monthname = now.strftime("%B")
-    yearnumber = now.strftime("%y")
-    worksheetname = "SoldBy " + monthname + " " + yearnumber
-    soldbysheet = client.open("Service Advisor Numbers").worksheet(worksheetname)
-
-
-    print(gspread.__version__)

@@ -9,7 +9,10 @@ def main():
     now = (datetime.datetime.today()).date()
     gui.setup()
 
+    #GRABS THE GOALS FOR THE MONTH, QUARTER, AND YEAR FROM OUR EXCEL FILE
     Reports.goalstxt()
+
+    #GRABS TECHNICIAN LIST FROM OUR EXCEL FILE OF TECHS WE WANT ON THE SHEET
     Reports.techstxt()
 
     gui.inputgoals()
