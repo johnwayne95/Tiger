@@ -1,14 +1,13 @@
-FIRST NAME,LAST NAME,BUSINESS UNIT,SERVICE ADVISOR #S ROW,COMFORT ADVISOR?
-Ryan,McCalla,Plumbing,10,FALSE
-Josh,Harris,Plumbing,12,FALSE
-Alan,Shelley,Plumbing,14,FALSE
-Logan,Deadmond,Plumbing,16,FALSE
-Bob,Begeske,Electric,22,FALSE
-Erik,Fisaga,HVAC,28,TRUE
-Amanda,Jackson,HVAC,30,TRUE
-Jimmie,Rines,HVAC,32,TRUE
-Sam,Kokaly,HVAC,38,FALSE
-Rick,Brown,HVAC,40,FALSE
-Joe,Zakrzewski,HVAC,42,FALSE
-Cierra,Beatty,HVAC,44,FALSE
-Logan,Goff,HVAC,46,FALSE
+FIRST NAME,LAST NAME,BUSINESS UNIT,COMFORT ADVISOR?
+Ryan,McCalla,Plumbing,FALSE
+Josh,Harris,Plumbing,FALSE
+Alan,Shelley,Plumbing,FALSE
+Logan,Deadmond,Plumbing,FALSE
+Bob,Begeske,Electric,FALSE
+Erik,Fisaga,HVAC,TRUE
+Amanda,Jackson,HVAC,TRUE
+Jimmie,Rines,HVAC,TRUE
+Sam,Kokaly,HVAC,FALSE
+Rick,Brown,HVAC,FALSE
+Joe,Zakrzewski,HVAC,FALSE
+Logan,Goff,HVAC,FALSE
