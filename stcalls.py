@@ -9,7 +9,7 @@ minimumtime = datetime.time(0, 1, 0, 0)
 
 today = datetime.datetime.today()
 
-thirtydays = today - datetime.timedelta(days=3)
+thirtydays = today - datetime.timedelta(days=7)
 
 callsfile = os.path.join(sys.path[0], 'callsdump.json')
 

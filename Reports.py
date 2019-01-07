@@ -142,7 +142,6 @@ def get_estimates():
 #OPEN CSV AND PROCESS DATA
 def csvgetter():
     global springfieldtotal
-    global ryanm, logang, bobb, erikf, amandaj, jimmie, samk, rickb, joez
     global plumbing, electric, hvac
     global techs, units, csrs
 
@@ -275,7 +274,8 @@ def csvgetter():
                                 unit.month2 += float(row['Total'])
 
                         #Yearly Total for Businesses
-                        unit.yearlytotal += float(row['Total'])
+                        if(jobdate >= year and jobdate <= now):
+                            unit.yearlytotal += float(row['Total'])
 
                 for x in csrs:
                     if(jobdate >= month and jobdate <= now):
@@ -286,7 +286,7 @@ def csvgetter():
                                 x[4] += 1
 
                 #STUPID SPRINGFIEND ZIP CODES GARBAGE
-                if(row['Zip'] in ('62712', '62711', '62707', '62704', '62703', '62702', '62661', '62650', '62640', '62629')):
+                if(row['Zip'] in ('62712', '62711', '62707', '62704', '62703', '62702', '62661', '62650', '62640', '62629') and jobdate <= now and jobdate >= year):
                     springfieldtotal += float(row['Total'])
 
 #OPEN ESTIMATES AND PROCESS DATA
@@ -453,7 +453,7 @@ def conversionsheet():
     worksheetname = "Club Conversion"
     conversionsheet = client.open("Club Sales Stats").worksheet(worksheetname)
 
-    range_build = 'B17:C24'
+    range_build = 'B15:C22'
     cell_list = conversionsheet.range(range_build)
 
     #JOBS
