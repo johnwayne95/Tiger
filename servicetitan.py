@@ -35,7 +35,7 @@ def getjobs(**kwargs):
 #             print(jobs[x]['tags'][y]['name'])
 
 def main():
-    jobs = getjobs(completedAfter='2018-01-01')
+    jobs = getjobs(completedAfter='2019-01-01')
     for x in range(len(jobs)):
         jobs[x] = dict(jobs[x])
         jobs[x]['businessUnit'] = dict(jobs[x]['businessUnit'])

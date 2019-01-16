@@ -75,6 +75,8 @@ ben = ["BM", "8", "25", 0, 0, 0, 0.0]
 #ARRAY OF CSR ARRAYS
 csrs = [justine, lynora, nicole, teresa, shelley, elias, lisa, marcie, ben]
 
+secret = os.path.join(sys.path[0], 'client_secret.json')
+
 #CLEAR DOWNLOAD DIRECTORY OF ALL .CSV FILES
 def cleardir():
     dirPath = "C:/Users/Administrator/Downloads/"
@@ -100,7 +102,7 @@ def get_reports():
     time.sleep(1)
     driver.find_element_by_name("StartFrom").click()
     driver.find_element_by_name("StartFrom").clear()
-    driver.find_element_by_name("StartFrom").send_keys("1/1/2018")
+    driver.find_element_by_name("StartFrom").send_keys("1/1/2019")
     driver.find_element_by_name("StartTo").click()
     driver.find_element_by_name("StartTo").clear()
     driver.find_element_by_name("StartTo").send_keys(endofmonth.strftime("%m/%d/%Y"))
@@ -108,35 +110,6 @@ def get_reports():
     driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='What do you want to search for?'])[1]/following::button[2]").click()
     driver.find_element_by_link_text("Export to Comma separated (*.csv)").click()
     time.sleep(45)
-    driver.close()
-
-#GET ESTIMATES (FOR TOTALS FOR SOME REASON)
-#THIS IS NOT CURRENTLY USED THANK GOD
-def get_estimates():
-    driver = webdriver.Chrome()
-    driver.get("https://go.servicetitan.com/#/Report")
-    driver.find_element_by_id("username").click()
-    driver.find_element_by_id("username").clear()
-    driver.find_element_by_id("username").send_keys("jwayne")
-    driver.find_element_by_id("password").clear()
-    driver.find_element_by_id("password").send_keys("082718O")
-    driver.find_element_by_id("password").send_keys(Keys.ENTER)
-    time.sleep(5)
-    driver.get("https://go.servicetitan.com/#/Search")
-    time.sleep(1)
-    driver.find_element_by_name("RecordType").click()
-    Select(driver.find_element_by_name("RecordType")).select_by_visible_text("Estimate")
-    driver.find_element_by_name("RecordType").click()
-    driver.find_element_by_name("StartFrom").click()
-    driver.find_element_by_name("StartFrom").clear()
-    driver.find_element_by_name("StartFrom").send_keys("1/1/2018")
-    driver.find_element_by_name("StartTo").click()
-    driver.find_element_by_name("StartTo").clear()
-    driver.find_element_by_name("StartTo").send_keys(endofmonth.strftime("%m/%d/%Y"))
-    driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='What do you want to search for?'])[1]/following::i[1]").click()
-    driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='What do you want to search for?'])[1]/following::button[2]").click()
-    driver.find_element_by_link_text("Export to Comma separated (*.csv)").click()
-    time.sleep(75)
     driver.close()
 
 #OPEN CSV AND PROCESS DATA
@@ -288,42 +261,9 @@ def csvgetter():
                 #STUPID SPRINGFIEND ZIP CODES GARBAGE
                 if(row['Zip'] in ('62712', '62711', '62707', '62704', '62703', '62702', '62661', '62650', '62640', '62629') and jobdate <= now and jobdate >= year):
                     springfieldtotal += float(row['Total'])
-
-#OPEN ESTIMATES AND PROCESS DATA
-#THIS IS ALSO NOT USED AT THIS TIME
-def estimatesgetter():
-    global springfieldtotal
-    global ryanm, logang, bobb, erikf, amandaj, jimmie, samk, rickb, joez
-    global plumbing, electric, hvac
-    global techs, units, csrs
-
-    filepath = "C:/Users/Administrator/Downloads/*.csv"
-    searchcsv = glob.glob(filepath)
-    name = searchcsv[0]
-
-    with open(name, encoding="utf8", newline='') as File:  
-        reader = csv.DictReader(File)
-        #loop through csv
-        for row in reader:
-            if row['Created On'] != '':
-                jobdate = (datetime.datetime.strptime(row['Created On'], '%m/%d/%Y')).date()
-                total = float(row['Amount'])
-
-                for tech in techs:
-
-                    #LAST WEEK TOTALS
-                    if(jobdate >= lastweekmon and jobdate <= lastweeksun):
-                        if(tech.name in row['Sold By']):
-                            tech.lastweek += total
-
-                    #MONTHLY TOTALS
-                    if(jobdate >= month and jobdate <= now):
-                        if(tech.name in row['Sold By']):
-                            tech.monthtotal += total
                             
 #PUT DATA INTO GOOGLE SHEETS
 
-secret = os.path.join(sys.path[0], 'client_secret.json')
 #SoldBy Month
 def soldbysheet():
     # use creds to create a client to interact with the Google Drive API
