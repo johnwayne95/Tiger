@@ -18,6 +18,7 @@ import csv
 import math
 import Techs
 import Units
+import CSRs
 
 #IMPORTANT GLOBAL VARIABLES
 #DATES
@@ -56,24 +57,9 @@ hvac = Units.Unit("HVAC", "13", "17", "26")
 #ARRAY OF BUSINESS UNITS
 units = [plumbing, electric, hvac]
 
-#CSR ARRAYS
-#NAME[TAG, REV.ROW#, CONV.ROW#, JOBS, OPPS, SOLD, REVENUE]
-#    [ 0      1          2       3     4     5       6   ]
-#                                            ^SOLD is currently not in use, just in here for when servicetitan (hopefully) updates
-justine = ["JN", "4", "20", 0, 0, 0, 0.0]
-lynora = ["LB", "5", "21", 0, 0, 0, 0.0]
-nicole = ["NW", "2", "22", 0, 0, 0, 0.0]
-teresa = ["TJ", "3", "23", 0, 0, 0, 0.0]
-
-elias = ["ET", "N/A", "25", 0, 0, 0, 0.0]
-lisa = ["LV", "N/A", "26", 0, 0, 0, 0.0]
-marcie = ["MH", "6", "27", 0, 0, 0, 0.0]
-
-shelley = ["ST", "7", "N/A", 0, 0, 0, 0.0]
-ben = ["BM", "8", "25", 0, 0, 0, 0.0]
 
 #ARRAY OF CSR ARRAYS
-csrs = [justine, lynora, nicole, teresa, shelley, elias, lisa, marcie, ben]
+csrs = []
 
 secret = os.path.join(sys.path[0], 'client_secret.json')
 
@@ -85,7 +71,6 @@ def cleardir():
         if fileName.endswith(".csv"):
             os.remove(dirPath+"/"+fileName)
     
-
 #GRAB FROM SERVICETITAN
 def get_reports():
     cdriver = os.path.join(sys.path[0], 'chromedriver.exe')
@@ -110,6 +95,38 @@ def get_reports():
     driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='What do you want to search for?'])[1]/following::button[2]").click()
     driver.find_element_by_link_text("Export to Comma separated (*.csv)").click()
     time.sleep(45)
+    driver.close()
+
+def get_memberships():
+    cdriver = os.path.join(sys.path[0], 'chromedriver.exe')
+    driver = webdriver.Chrome(cdriver)
+    driver.get("https://go.servicetitan.com/#/Report")
+    driver.find_element_by_id("username").click()
+    driver.find_element_by_id("username").clear()
+    driver.find_element_by_id("username").send_keys("jwayne")
+    driver.find_element_by_id("password").clear()
+    driver.find_element_by_id("password").send_keys("082718O")
+    driver.find_element_by_id("password").send_keys(Keys.ENTER)
+    time.sleep(5)
+    driver.get("https://go.servicetitan.com/#/Report")
+    time.sleep(5)
+    driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)=concat('Search by a report', \"'\", 's name')])[1]/following::input[1]").send_keys("mem")
+    driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)=concat('Search by a report', \"'\", 's name')])[1]/following::input[1]").send_keys(Keys.ENTER)
+    time.sleep(5)
+    driver.find_element_by_link_text("Memberships Sold By Report").click()
+    time.sleep(1)
+    driver.find_element_by_name("From").click()
+    driver.find_element_by_name("From").clear()
+    driver.find_element_by_name("From").send_keys(month.strftime("%m/%d/%Y"))
+    driver.find_element_by_name("To").click()
+    driver.find_element_by_name("To").clear()
+    driver.find_element_by_name("To").send_keys(endofmonth.strftime("%m/%d/%Y"))
+    driver.find_element_by_name("To").send_keys(Keys.ENTER)
+    driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='To'])[1]/following::button[1]").click()
+    time.sleep(1)
+    driver.find_element_by_xpath("(.//*[normalize-space(text()) and normalize-space(.)='Update'])[1]/following::a[2]").click()
+    driver.find_element_by_link_text("Export to Comma separated (*.csv)").click()
+    time.sleep(10)
     driver.close()
 
 #OPEN CSV AND PROCESS DATA
@@ -252,16 +269,31 @@ def csvgetter():
 
                 for x in csrs:
                     if(jobdate >= month and jobdate <= now):
-                        if(x[0] in row['Tag(s)'] and row['Completed On'] != ""):
-                            x[6] += float(row['Total'])
-                            x[3] += 1
+                        if(x.initials in row['Tag(s)'] and row['Completed On'] != ""):
+                            x.revenue += float(row['Total'])
+                            x.jobs += 1
                             if("Potential Member" in row['Tag(s)']):
-                                x[4] += 1
+                                x.opps += 1
 
                 #STUPID SPRINGFIEND ZIP CODES GARBAGE
                 if(row['Zip'] in ('62712', '62711', '62707', '62704', '62703', '62702', '62661', '62650', '62640', '62629') and jobdate <= now and jobdate >= year):
                     springfieldtotal += float(row['Total'])
-                            
+
+
+def membershipsgetter():
+    filepath = "C:/Users/Administrator/Downloads/*.csv"
+    searchcsv = glob.glob(filepath)
+    name = searchcsv[0]
+
+    with open(name, encoding="utf8", newline='') as File:  
+        reader = csv.DictReader(File)
+        #loop through csv
+        for row in reader:
+            for x in csrs:
+                if(x.name in row['Sold By']):
+                    x.sold += 1
+
+
 #PUT DATA INTO GOOGLE SHEETS
 
 #SoldBy Month
@@ -370,16 +402,10 @@ def revenuesheet():
     worksheetname = "Revenue"
     revenuesheet = client.open("Club Sales Stats").worksheet(worksheetname)
 
-    range_build = 'C2:C8'
-    cell_list = revenuesheet.range(range_build)
-    cell_list[0].value = nicole[6]
-    cell_list[1].value = teresa[6]
-    cell_list[2].value = justine[6]
-    cell_list[3].value = lynora[6]
-    cell_list[4].value = marcie[6]
-    cell_list[5].value = shelley[6]
-    cell_list[6].value = ben[6]
-    revenuesheet.update_cells(cell_list)
+    for csr in csrs:
+        cell = revenuesheet.find(csr.firstname)
+        csr.row = str(cell.row)
+        revenuesheet.update_acell('C' + csr.row, csr.revenue)
 
 #CSR CONVERSION
 def conversionsheet():
@@ -393,30 +419,17 @@ def conversionsheet():
     worksheetname = "Club Conversion"
     conversionsheet = client.open("Club Sales Stats").worksheet(worksheetname)
 
-    range_build = 'B15:C22'
-    cell_list = conversionsheet.range(range_build)
+    for csr in csrs:
+        cell = conversionsheet.find(csr.name)
+        csr.row = str(cell.row)
 
-    #JOBS
-    cell_list[0].value = justine[3]
-    cell_list[2].value = lynora[3]
-    cell_list[4].value = nicole[3]
-    cell_list[6].value = teresa[3]
-    cell_list[8].value = elias[3]
-    cell_list[10].value = lisa[3]
-    cell_list[12].value = marcie[3]
-    cell_list[14].value = ben[3]
+        range_build = 'B' + csr.row + ":D" + csr.row
+        cell_list = conversionsheet.range(range_build)
+        cell_list[0].value = csr.jobs
+        cell_list[1].value = csr.opps
+        cell_list[2].value = csr.sold
 
-    #OPPORTUNITIES 
-    cell_list[1].value = justine[4]
-    cell_list[3].value = lynora[4]
-    cell_list[5].value = nicole[4]
-    cell_list[7].value = teresa[4]
-    cell_list[9].value = elias[4]
-    cell_list[11].value = lisa[4]
-    cell_list[13].value = marcie[4]
-    cell_list[15].value = ben[4]
-
-    conversionsheet.update_cells(cell_list)
+        conversionsheet.update_cells(cell_list)
 
 #SHEET THAT UPDATES SLIDES
 def slidessheet():
@@ -693,4 +706,15 @@ def techstxt():
             name = name.upper()
             listname = Techs.Tech(name, row['BUSINESS UNIT'], row['COMFORT ADVISOR?'])
             techs.append(listname)
+            count += 1
+
+
+def csrstxt():
+    with open('CSRlist.csv', encoding="utf8", newline='') as File:
+        reader = csv.DictReader(File)
+        count = 0
+        for row in reader:
+            listname = "CSR" + str(count)
+            listname = CSRs.CSR(row['FIRST NAME'], row['LAST NAME'])
+            csrs.append(listname)
             count += 1

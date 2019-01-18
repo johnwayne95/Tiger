@@ -15,6 +15,8 @@ def main():
     #GRABS TECHNICIAN LIST FROM OUR EXCEL FILE OF TECHS WE WANT ON THE SHEET
     Reports.techstxt()
 
+    Reports.csrstxt()
+
     gui.inputgoals()
 
     gui.print("Starting Daily Reports...")
@@ -31,6 +33,18 @@ def main():
     gui.print("Processing Data File...")
     #REPORTS- ANALYZES AND SORTS DATA FROM CSV FILE
     Reports.csvgetter()
+
+    gui.print("Clearing Directory Again...")
+    #REPORTS- CLEAR DIRECTORY OF ALL .CSV FILES
+    Reports.cleardir()
+
+    gui.print("Getting CSR Memberships File From ServiceTitan...")
+    #REPORTS- GO TO SERVICETITAN AND GRAB NEW CSV FILE
+    Reports.get_memberships()
+
+    gui.print("Processing Memberships File...")
+    #REPORTS- ANALYZES AND SORTS DATA FROM CSV FILE
+    Reports.membershipsgetter()
 
     gui.print("Exporting Data to SoldBy Sheet...")
     #REPORTS SOLDBY SHEET

@@ -1,3 +1,3 @@
 import Reports
 
-Reports.dupsheet()
+Reports.get_memberships()
