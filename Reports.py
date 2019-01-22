@@ -48,7 +48,6 @@ springfieldtotal = 0.0
 #TECHS
 techs = []
 
-
 #BUSINESS UNITS
 plumbing = Units.Unit("Plumbing", "5", "6", "15")
 electric = Units.Unit("Electric", "9", "28", "37")
@@ -78,9 +77,9 @@ def get_reports():
     driver.get("https://go.servicetitan.com/#/Report")
     driver.find_element_by_id("username").click()
     driver.find_element_by_id("username").clear()
-    driver.find_element_by_id("username").send_keys("jwayne")
+    driver.find_element_by_id("username").send_keys("reports19")
     driver.find_element_by_id("password").clear()
-    driver.find_element_by_id("password").send_keys("082718O")
+    driver.find_element_by_id("password").send_keys("jw0827")
     driver.find_element_by_id("password").send_keys(Keys.ENTER)
     time.sleep(5)
     driver.get("https://go.servicetitan.com/#/Search")
@@ -103,9 +102,9 @@ def get_memberships():
     driver.get("https://go.servicetitan.com/#/Report")
     driver.find_element_by_id("username").click()
     driver.find_element_by_id("username").clear()
-    driver.find_element_by_id("username").send_keys("jwayne")
+    driver.find_element_by_id("username").send_keys("reports19")
     driver.find_element_by_id("password").clear()
-    driver.find_element_by_id("password").send_keys("082718O")
+    driver.find_element_by_id("password").send_keys("jw0827")
     driver.find_element_by_id("password").send_keys(Keys.ENTER)
     time.sleep(5)
     driver.get("https://go.servicetitan.com/#/Report")
@@ -279,7 +278,6 @@ def csvgetter():
                 if(row['Zip'] in ('62712', '62711', '62707', '62704', '62703', '62702', '62661', '62650', '62640', '62629') and jobdate <= now and jobdate >= year):
                     springfieldtotal += float(row['Total'])
 
-
 def membershipsgetter():
     filepath = "C:/Users/Administrator/Downloads/*.csv"
     searchcsv = glob.glob(filepath)
@@ -292,7 +290,6 @@ def membershipsgetter():
             for x in csrs:
                 if(x.name in row['Sold By']):
                     x.sold += 1
-
 
 #PUT DATA INTO GOOGLE SHEETS
 
