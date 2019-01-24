@@ -461,7 +461,7 @@ def slidessheet():
         cell_list[0].value = unit.name + " " + now.strftime("%Y") + " Goals"
         cell_list[8].value = "As of " + now.strftime("%A, %b ") + str(now.day) + now.strftime(" ,%Y")
 
-        #THESE ARE THE BASE GOAL NUMBERS
+        #THESE ARE THE BASE GOAL NUMBERS & DATE RANGES OF THE QUARTER & YEAR
         weekgoal = (unit.monthgoal)/4.3
         cell_list[17].value = weekgoal #WEEK GOAL
         cell_list[19].value = unit.monthgoal #MONTH GOAL
@@ -521,8 +521,14 @@ def slidessheet():
 
         #MONTHLY REMAINDERS
         month1remain = "${:,.2f}".format(unit.quartergoal - unit.month1)
+
+        cell_list[28].value = quarter.strftime("%B")
         cell_list[29].value = month1remain #MONTH 1
+
+        cell_list[36].value = qmonth2.strftime("%B")
         cell_list[37].value = "" #MONTH 2
+
+        cell_list[44].value = qmonth3.strftime("%B")
         cell_list[45].value = "" #MONTH 3
 
         if(now >= qmonth2):
@@ -534,6 +540,7 @@ def slidessheet():
 
         #YEAR REMAINDER
         yearremain = "${:,.2f}".format(unit.yearlygoal - unit.yearlytotal)
+        cell_list[30].value = now.strftime("%Y")
         cell_list[31].value = yearremain #YEAR
 
         slidessheet.update_cells(cell_list)
