@@ -89,7 +89,6 @@ def main():
         gui.print("It's Monday! Exporting Data to Weekly Management Meeting Sheet...")
         #REPORTS- WEEKLY MGMT MEETING SHEET
         Reports.weeklymgmtsheet()
-    
     gui.print("ALL DONE! You may now close this window.")
     gui.update() #KEEPS WINDOW OPEN UNTIL USER CLOSES IT
 

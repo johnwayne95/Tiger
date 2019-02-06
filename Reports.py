@@ -1,4 +1,6 @@
 import gspread
+import pygsheets #NOTE: As of right now, pygsheets is only being used for creating new sheets at the beginning of each month. This will be changed once I have time, since I don't like
+                 #having 2 libraries that basically do the same thing. It definitely will cause confusion if I leave it like this, but I want to get a product out there.
 from oauth2client.service_account import ServiceAccountCredentials
 
 from selenium import webdriver
@@ -555,7 +557,8 @@ def weeklymgmtsheet():
     # Find a workbook by name and open the first sheet
     # Make sure you use the right name here.
     monthname = today.strftime("%B")
-    worksheetname = monthname + " SMN"
+    yearnumber = now.strftime("%y")
+    worksheetname = monthname + " " + yearnumber + " SMN"
     weeklymgmtsheet = client.open("Weekly Management Meeting Agenda").worksheet(worksheetname)
 
     remainingmonth = (endofmonth - now).days
