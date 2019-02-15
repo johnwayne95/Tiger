@@ -29,7 +29,6 @@ calls = data['data']
 for x in range(len(calls)):
     calls[x] = dict(calls[x])
     calls[x]['leadCall'] = dict(calls[x]['leadCall'])
-    calls[x]['leadCall']['createdBy'] = dict(calls[x]['leadCall']['createdBy'])
     calltime = datetime.datetime.strptime(calls[x]['leadCall']['duration'][:8], '%H:%M:%S').time()
     status = calls[x]['leadCall']['callType']
     callid = calls[x]['leadCall']['id']
