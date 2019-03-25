@@ -1,6 +1,4 @@
 import gspread
-import pygsheets #NOTE: As of right now, pygsheets is only being used for creating new sheets at the beginning of each month. This will be changed once I have time, since I don't like
-                 #having 2 libraries that basically do the same thing. It definitely will cause confusion if I leave it like this, but I want to get a product out there.
 from oauth2client.service_account import ServiceAccountCredentials
 
 from selenium import webdriver
@@ -46,6 +44,8 @@ year = now.replace(month=1, day=1)
 endofyear = now.replace(month=12, day=31)
 
 springfieldtotal = 0.0
+springfieldhvac = 0.0
+springfieldplumb = 0.0
 
 #TECHS
 techs = []
@@ -132,7 +132,7 @@ def get_memberships():
 
 #OPEN CSV AND PROCESS DATA
 def csvgetter():
-    global springfieldtotal
+    global springfieldtotal, springfieldhvac, springfieldplumb
     global plumbing, electric, hvac
     global techs, units, csrs
 
@@ -279,6 +279,10 @@ def csvgetter():
                 #STUPID SPRINGFIEND ZIP CODES GARBAGE
                 if(row['Zip'] in ('62712', '62711', '62707', '62704', '62703', '62702', '62661', '62650', '62640', '62629') and jobdate <= now and jobdate >= year):
                     springfieldtotal += float(row['Total'])
+                    if(("HVAC") in row['Business Unit']):
+                        springfieldhvac += float(row['Total'])
+                    if(("Plumbing") in row['Business Unit']):
+                        springfieldplumb += float(row['Total'])
 
 def membershipsgetter():
     filepath = "C:/Users/Administrator/Downloads/*.csv"
@@ -291,7 +295,7 @@ def membershipsgetter():
         for row in reader:
             for x in csrs:
                 if(x.name in row['Sold By']):
-                    x.sold += 1
+                    x.sold = x.sold + 1
 
 #PUT DATA INTO GOOGLE SHEETS
 
@@ -308,7 +312,7 @@ def soldbysheet():
     monthname = now.strftime("%B")
     yearnumber = now.strftime("%y")
     worksheetname = "SoldBy " + monthname + " " + yearnumber
-    soldbysheet = client.open("Service Advisor Numbers").worksheet(worksheetname)
+    soldbysheet = client.open("Service Adviser Numbers").worksheet(worksheetname)
 
     soldbysheet.update_acell('A1', now.strftime("%m/%d/%Y"))
 
@@ -363,7 +367,7 @@ def soacsheet():
     monthname = now.strftime("%B")
     yearnumber = now.strftime("%y")
     worksheetname = "SOAC " + monthname + " " + yearnumber
-    soacsheet = client.open("Service Advisor Numbers").worksheet(worksheetname)
+    soacsheet = client.open("Service Adviser Numbers").worksheet(worksheetname)
 
     soacsheet.update_acell('A1', "Summary of all Companies as of: " + now.strftime("%m/%d/%Y"))
 
@@ -669,6 +673,9 @@ def weeklymgmtsheet():
 
     servyearelec = float(weeklymgmtsheet.acell('L12').value[1: ].replace(",", "").replace("$", ""))
     weeklymgmtsheet.update_acell('L13', servyearelec/remainingyear)
+
+    weeklymgmtsheet.update_acell('N2', springfieldhvac)
+    weeklymgmtsheet.update_acell('O2', springfieldplumb)
 
 #GRABS MONTHLY, QUARTERLY, AND YEARLY GOALS FROM GOALS.TXT
 def goalstxt():
