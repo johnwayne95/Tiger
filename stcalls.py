@@ -13,7 +13,7 @@ thirtydays = today - datetime.timedelta(days=7)
 
 callsfile = os.path.join(sys.path[0], 'callsdump.json')
 
-headers = {"Accept": "application/json", "serviceTitanApiKey" : "8ae6480a-2499-4e84-bd09-7c461f033ddb", "createdAfter" : thirtydays.strftime("%Y-%m-%d"), "pageSize" : "20000"}
+headers = {"Accept": "application/json", "serviceTitanApiKey" : "API KEY HERE", "createdAfter" : thirtydays.strftime("%Y-%m-%d"), "pageSize" : "20000"}
 resp = requests.get('HTTPS://api.servicetitan.com/v1/calls?', params = headers)
 
 with open(callsfile, "w") as write_file:
